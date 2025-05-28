@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class WeatherForecastApp {
         try {
             // Web APIを呼び出す
             // HttpURLConnectionを使ってGETリクエストを送信する
-            URL url = new URL(TARGET_URL);
+            URL url = new URI(TARGET_URL).toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
@@ -84,8 +85,8 @@ public class WeatherForecastApp {
                 // レスポンスコードがOKでない場合のエラー処理
                 System.out.println("データの取得に失敗しました!");
             }
-        } catch (IOException e) {
-            // IO例外を処理する
+        } catch (IOException | java.net.URISyntaxException e) {
+            // IO例外やURI構文例外を処理する
             e.printStackTrace();
         }
     }
