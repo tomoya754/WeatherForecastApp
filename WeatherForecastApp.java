@@ -19,6 +19,7 @@ public class WeatherForecastApp {
      * @param args コマンドライン引数（使用しません）
      */
     public static void main(String[] args) {
+        System.out.println("大阪府の天気予報を取得します...");
         try {
             WeatherApiClient client = new WeatherApiClient(TARGET_URL); // 天気予報APIクライアント
             List<WeatherForecast> forecasts = client.fetchWeatherForecasts(); // 天気予報データを取得
