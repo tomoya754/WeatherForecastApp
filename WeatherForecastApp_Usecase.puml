@@ -1,0 +1,9 @@
+@startuml WeatherForecastApp_Usecase
+' ユースケース図: WeatherForecastApp
+
+actor User
+
+User --> (天気予報の取得)
+(天気予報の取得) --> (天気予報の表示)
+
+@enduml

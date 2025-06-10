@@ -1,0 +1,25 @@
+@startuml
+' クラス図: WeatherForecastApp
+
+class WeatherForecastApp {
+    +main(String[] args)
+    -TARGET_URL : String
+}
+
+class WeatherApiClient {
+    -apiUrl : String
+    +WeatherApiClient(String apiUrl)
+    +fetchWeatherForecasts() : List<WeatherForecast>
+}
+
+class WeatherForecast {
+    -dateTime : LocalDateTime
+    -weather : String
+    +WeatherForecast(LocalDateTime dateTime, String weather)
+    +getDateTime() : LocalDateTime
+    +getWeather() : String
+}
+
+WeatherForecastApp --> WeatherApiClient : uses
+WeatherApiClient --> WeatherForecast : creates
+@enduml

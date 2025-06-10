@@ -1,0 +1,17 @@
+@startuml WeatherForecastApp_Seqence
+' シーケンス図: WeatherForecastApp の利用シナリオ
+
+actor User
+User -> WeatherForecastApp : アプリ起動
+activate WeatherForecastApp
+WeatherForecastApp -> WeatherApiClient : new WeatherApiClient(TARGET_URL)
+WeatherForecastApp -> WeatherApiClient : fetchWeatherForecasts()
+activate WeatherApiClient
+WeatherApiClient -> WeatherForecast : new WeatherForecast(dateTime, weather) (繰り返し)
+deactivate WeatherApiClient
+WeatherApiClient --> WeatherForecastApp : List<WeatherForecast>
+WeatherForecastApp -> WeatherForecast : getDateTime()/getWeather() (繰り返し)
+WeatherForecastApp --> User : 天気予報を表示
+
+deactivate WeatherForecastApp
+@enduml
